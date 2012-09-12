@@ -37,7 +37,7 @@ class IntrospectionDebugPanel(DebugPanel):
     def content(self):
         introspector = self.request.registry.introspector
         categorized = introspector.categorized()
-        static_path = self.request.static_url(STATIC_PATH)
+        static_path = self.request.static_path(STATIC_PATH)
         vars = {
             'categorized':categorized, 'debug_repr':debug_repr,
             'static_path':static_path, 'object_description':object_description,

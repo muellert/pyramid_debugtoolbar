@@ -234,12 +234,12 @@ class Traceback(object):
 
     def render_full(self, request, lodgeit_url=None):
         """Render the Full HTML page with the traceback info."""
-        static_path = request.static_url(STATIC_PATH)
-        root_path = request.route_url(ROOT_ROUTE_NAME)
+        static_path = request.static_path(STATIC_PATH)
+        root_path = request.route_path(ROOT_ROUTE_NAME)
         exc = escape(self.exception)
         summary = self.render_summary(include_title=False, request=request)
         qs = {'token':request.exc_history.token, 'tb':str(self.id)}
-        url = request.route_url(EXC_ROUTE_NAME, _query=qs)
+        url = request.route_path(EXC_ROUTE_NAME, _query=qs)
         evalex = request.exc_history.eval_exc
         vars = {
             'evalex':           evalex and 'true' or 'false',

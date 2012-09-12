@@ -116,8 +116,8 @@ class SQLADebugPanel(DebugPanel):
             })
 
         vars = {
-            'static_path': self.request.static_url(STATIC_PATH),
-            'root_path': self.request.route_url(ROOT_ROUTE_NAME),
+            'static_path': self.request.static_path(STATIC_PATH),
+            'root_path': self.request.route_path(ROOT_ROUTE_NAME),
             'queries':data,
             'text':text,
             }

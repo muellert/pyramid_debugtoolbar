@@ -30,7 +30,7 @@ class TweensDebugPanel(DebugPanel):
         return ''
 
     def content(self):
-        static_path = self.request.static_url(STATIC_PATH)
+        static_path = self.request.static_path(STATIC_PATH)
         definition = 'Explicit'
         tweens = self.tweens.explicit
         if not tweens:

@@ -45,8 +45,8 @@ class DebugToolbar(object):
             panel.process_response(response)
 
         if response.content_type in self.html_types:
-            static_path = request.static_url(STATIC_PATH)
-            root_path = request.route_url(ROOT_ROUTE_NAME)
+            static_path = request.static_path(STATIC_PATH)
+            root_path = request.route_path(ROOT_ROUTE_NAME)
             button_style = get_setting(request.registry.settings,
                     'button_style', '')
             vars = {'panels': self.panels, 'static_path': static_path,
@@ -130,7 +130,7 @@ def toolbar_tween_factory(handler, registry):
                 toolbar.process_response(response)
                 qs = {'token':exc_history.token, 'tb':str(tb.id)}
                 msg = 'Exception at %s\ntraceback url: %s' 
-                exc_url = request.route_url(EXC_ROUTE_NAME, _query=qs)
+                exc_url = request.route_path(EXC_ROUTE_NAME, _query=qs)
                 exc_msg = msg % (request.url, exc_url)
                 logger.exception(exc_msg)
                 return response
